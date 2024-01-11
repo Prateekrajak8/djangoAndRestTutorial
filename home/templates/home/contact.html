@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block start %}
+        <h1>Contact</h1>
+        <a href="/about">Contact</a>
+  <div class="container mt-5">
+    
+<table class="table">
+    <tr>
+      <th>S.No.</th>
+      <th>Name</th>
+      <th>Contact</th>
+    </tr>
+    {% for people in peoples %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ people.name }}</td>
+        <td>{{ people.contact }}</td>
+      </tr>
+      {% endfor %}
+</table>
+  </div>
+  {% endblock %}
+
+
+  

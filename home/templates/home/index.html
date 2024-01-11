@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block start %}
+
+        <h1>success</h1>
+        <a href="about/"></a>
+  <div class="container mt-5">
+    
+<table class="table">
+    <tr>
+      <th>S.No.</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Is Vote</th>
+    </tr>
+    {% for people in peoples %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ people.name }}</td>
+        <td>{{ people.age }}</td>
+        <td>
+            {% if people.age >= 18 %}
+                yes
+            {% else %}
+                no
+            {% endif %}
+        </td> 
+      </tr>
+      {% endfor %}
+</table>
+  </div>
+  {% endblock %}
+

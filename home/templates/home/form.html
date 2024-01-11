@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div>
+    <h1>Registration Form</h1>
+
+<form style="display: flex; justify-content: center;" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div style="display: grid; grid-gap: 1rem;">
+        <div>
+            <label>Name</label>
+            <input name="name" type="text"/>
+        </div>
+        <div>
+            <label>Email ID</label>
+            <input name="email" type="text"/>
+        </div>
+        <div>
+            <label>Phone Number</label>
+            <input name="phone" type="number"/>
+        </div>
+        <div>
+            <label>Age</label>
+            <input name="age" type="number"/>
+        </div>
+        <div>
+            <label>Profile</label>
+            <input name="profile" type="file"/>
+        </div>
+        <button type="submit" style="background-color: rgb(68, 68, 101);">Submit</button>
+    </div>
+</form>
+
+<div style="padding: 5rem;">
+    <table>
+        <thead>
+            <th style="padding: 1rem;">S. No.</th>
+            <th style="padding: 1rem;">
+               Name 
+            </th>
+            <th style="padding: 1rem;">
+                Email 
+             </th>
+             <th style="padding: 1rem;">
+                Phone 
+             </th>
+             <th style="padding: 1rem;">
+                Age 
+             </th>
+             <th style="padding: 1rem;">
+                Profile 
+             </th>
+             <th style="padding: 1rem;">
+                Delete 
+             </th>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+          <td style="padding: 1rem;">{{forloop.counter}}</td>
+          <td style="padding: 1rem;">{{user.name}}</td>
+          <td style="padding: 1rem;">{{user.email}}</td>
+          <td style="padding: 1rem;">{{user.number}}</td>
+          <td style="padding: 1rem;">{{user.age}}</td>
+          <td style="padding: 1rem;">{{user.profile}}</td>
+          <td style="padding: 1rem;"><a href="delete/{{user.id}}/"><button style="background-color: red;">Delete</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+</div>
+
+{% endblock %}
